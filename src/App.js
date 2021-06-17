@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Searchbar from './components/searchbar/Searchbar';
+import Tranding from './components/trending/Tranding';
+
 class App extends Component {
     state = { 
 
@@ -6,7 +9,8 @@ class App extends Component {
     render() {
         return (
          <>
-          <p>goit-react-hw-04-movies</p>
+          <Tranding />
+          <Searchbar />
          </>
         );
     }
