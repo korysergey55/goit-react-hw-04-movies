@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class Searchbar extends Component {
  state = {
@@ -8,21 +9,15 @@ class Searchbar extends Component {
   searchWord: "",
  };
 
-//  componentDidUpdate(prevProps, prevState) {
-//   if (this.searchWord) {
-//    this.getSearchMuvieApi();
-//   }
-//  }
-
  getSearchMuvieApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
   const BASE_URL = "https://api.themoviedb.org/3/";
 
   try {
-   const dataSearch = await axios.get(
+   const searchApi = await axios.get(
     `${BASE_URL}search/movie?api_key=${KEY}&query=${this.state.searchWord}&language=en-US&page=1&include_adult=false`
    );
-   this.setState({ muvies: dataSearch.data.results });
+   this.setState({ muvies: searchApi.data.results });
   } catch (error) {
    console.log(error);
   }
@@ -43,27 +38,28 @@ class Searchbar extends Component {
     <form className="SearchForm" onSubmit={this.hadleSubmit}>
      <input
       onChange={this.seveInputValue}
-      className="SearchForm-input"
+      className="SearchFormInput"
       type="text"
       name="searchWord"
       autocomplete="off"
       autofocus
-      placeholder="Search muvies"
+      placeholder=" Enter movie heare"
      />
-     <button type="submit" className="SearchForm-button">
-      <span className="SearchForm-button-label">Search muvies</span>
+     <button type="submit" className="SearchFormButton">
+      <span className="SearchForm-button-label">Search</span>
      </button>
     </form>
-    <ul>
-     <h2>Searchbar</h2>
+    <ul className="searchFilmContainer">
      {this.state.muvies.map((muv) => (
-      <li key={muv.id}>
-       <p>{muv.title}</p>
-       <img
-        src={`https://image.tmdb.org/t/p/w200${muv.poster_path} `}
-        alt={muv.title}
-       />
-      </li>
+      <Link to={`/movies/${muv.id}`}>
+       <li key={muv.id} className="searchFilmLi">
+        <img
+         className="filmSearchImg"
+         src={`https://image.tmdb.org/t/p/w300${muv.poster_path} `}
+         alt={muv.title}
+        />
+       </li>
+      </Link>
      ))}
     </ul>
    </>
