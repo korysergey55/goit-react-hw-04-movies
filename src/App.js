@@ -1,31 +1,14 @@
 import React, { Component } from "react";
 import { mainRouts } from "./routs/mainRouters";
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
+import Header from "./components/header/Header";
 
 class App extends Component {
- state = {
-   
- };
+ state = {};
  render() {
   return (
    <>
-    <ul className="NavLinkContainer">
-     {mainRouts.map(
-      (rout) =>
-       rout.isLink && (
-        <li key={rout.path}>
-         <NavLink
-          to={rout.path}
-          exact={rout.exact}
-          className="NavLink"
-          activeClassName="NavLinkActiv"
-         >
-          {rout.name}
-         </NavLink>
-        </li>
-       )
-     )}
-    </ul>
+    <Header />
 
     {mainRouts.map((rout) => (
      <Route

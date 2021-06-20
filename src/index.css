@@ -2,122 +2,17 @@ body {
  margin: 0;
  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background-color:rgb(228, 152, 118);
+ background-color: rgb(228, 152, 118);
 }
 
 code {
  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-ul,ol {
+ul,
+ol{
  list-style: none;
 }
 
-.NavLinkContainer {
- display: flex;
- justify-content: center;
- align-items: center;
-}
-.NavLink {
- margin-right: 30px;
- font-size: 30px;
- font-weight: 700;
- text-decoration: none;
-text-shadow: 2px 2px 3px rgba(71, 76, 64, 1);
-}
-.NavLinkActiv {
- color: red;
-}
-.trandingTodayTitle{
-  font-size: 35px;
-  font-weight: 700;
-  text-align: center;
-  text-shadow: 2px 2px 3px rgba(71, 76, 64, 1);
-}
-.trandingTodayFilmContainer{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.trandingTodayFilmLi{
-  margin-bottom: 20px;
-   box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.12), 0px 4px 4px rgba(255, 252, 252, 0.06), 1px 4px 6px rgba(255, 251, 251, 0.16);
-   border-radius: 5px;
-}
-.filmTrandingTodayImg{
-  border-radius: 5px;
-}
 
 
-.SearchFormInput{
-  display: inline-block;
-  margin-left: 35%;
-  margin-right: 10px;
-  width: 300px;
-  height: 40px;
-  padding-left: 30px;
-  border-radius: 15px;
-  outline: none;
-  font-size: 20px;
-  font-weight: 500;
-}
-.SearchFormButton{
-  width: 150px;
-  height: 40px;
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: 700;
-}
-.SearchFormButton:hover{
-  cursor: pointer;
-  background-color: springgreen;
-}
-.searchFilmContainer{
- display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.searchFilmLi{
-   margin-bottom: 20px;
-   box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.12), 0px 4px 4px rgba(255, 252, 252, 0.06), 1px 4px 6px rgba(255, 251, 251, 0.16);
-   border-radius: 5px;
-}
-.filmSearchImg{
-  border-radius: 5px;
-}
 
-
-.buttonGoback{
-  display: block;
-   width: 100px;
-  height: 30px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: 500;
-}
-.buttonGoback:hover{
-  cursor: pointer;
-  background-color: springgreen;
-}
-.movieDetailsImg{
-  display: inline-block;
-  border-radius: 5px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.movieDetailsLi{
-  display: inline-block;
-  width: 700px;
-}
-.userScore{
-  font-weight: 500;
-}
-
-
-.MovieDetailsAdditionalInformation{
-  display: block;
-  margin-left: 20px;
-}

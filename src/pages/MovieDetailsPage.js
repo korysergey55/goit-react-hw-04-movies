@@ -1,40 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import MovieDetails from "../components/movieDetails/MovieDetails";
-import { detailRoute } from "../routs/datailsRouter";
+import { datailsRoute } from "../routs/datailsRouter";
 import { NavLink, Switch, Route } from "react-router-dom";
 
-const MovieDetailsPage = ({match}) => {
- const { movieId } = match.params;
- 
- console.log(match);
+class MovieDetailsPage extends Component {
+ state = { from: "", movieID: "", film: {}, search: "" };
 
- return (
-  <>
-   <MovieDetails id={movieId} />
+ render() {
+  
+  return (
+   <>
+    <MovieDetails filmId={this.props.match.params.movieId} />
 
-   <h2 className="MovieDetailsAdditionalInformation">
-    Additional information
-   </h2>
-   {detailRoute.map(({ name, exact, path }) => (
-    <li key={path}>
-     <NavLink to={match.url + path} exact={exact}>
-      {name}
-     </NavLink>
-    </li>
-   ))}
-
-   <Switch>
-    {detailRoute.map(({ component, exact, path }) => (
-     <Route
-      to={match.path + path}
-      exact={exact}
-      component={component}
-      key={path}
-     />
+    {datailsRoute.map(({ name, exact, path }) => (
+     <li key={path}>
+      <NavLink to={this.props.match.url + path} exact={exact}>
+       {name}
+      </NavLink>
+     </li>
     ))}
-   </Switch>
-  </>
- );
-};
+
+    <Switch>
+     {datailsRoute.map(({ component, exact, path }) => (
+      <Route
+       to={this.props.match.path + path}
+       exact={exact}
+       component={component}
+       key={path}
+      />
+     ))}
+    </Switch>
+   </>
+  );
+ }
+}
 
 export default MovieDetailsPage;
+
+

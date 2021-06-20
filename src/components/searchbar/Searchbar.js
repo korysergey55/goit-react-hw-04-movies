@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SearchBarConteinerStyled } from "./SearchbarStyled";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -34,7 +35,7 @@ class Searchbar extends Component {
 
  render() {
   return (
-   <>
+   <SearchBarConteinerStyled>
     <form className="SearchForm" onSubmit={this.hadleSubmit}>
      <input
       onChange={this.seveInputValue}
@@ -62,9 +63,15 @@ class Searchbar extends Component {
       </Link>
      ))}
     </ul>
-   </>
+   </SearchBarConteinerStyled>
   );
  }
 }
+
+
+Searchbar.defaultProps = {
+ imgUrl:
+  "https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder",
+};
 
 export default Searchbar;

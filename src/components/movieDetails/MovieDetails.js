@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { MovieDetailsContainerStyled } from "./MovieDetailsStyled";
 import axios from "axios";
 
 class MovieDetails extends Component {
@@ -14,24 +15,22 @@ class MovieDetails extends Component {
  getMovieDetailsApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
   const BASE_URL = "https://api.themoviedb.org/3/";
-  const { id } = this.props;
 
   try {
    const movieDetailsApi = await axios.get(
-    `${BASE_URL}movie/${id}?api_key=${KEY}&language=en-US`
+    `${BASE_URL}movie/${this.props.filmId}?api_key=${KEY}&language=en-US`
    );
-   console.log(this.props.id);
-   this.setState({ muvies: movieDetailsApi.data });
+  this.setState({ muvies: movieDetailsApi.data });
   } catch (error) {
    console.log(error);
   }
  };
 
  render() {
-  //  const genrs = this.state.muvies.genres;
+  //  const genr = this.state.muvies.genres;
 
   return (
-   <>
+   <MovieDetailsContainerStyled>
     <button type="button" className="buttonGoback">
      Go back
     </button>
@@ -51,13 +50,16 @@ class MovieDetails extends Component {
      <p>{this.state.muvies.overview}</p>
      <h2>Genres</h2>
      <p>{this.state.muvies.tagline}</p>
-     {/* {genrs.map((genre) => (
-      <li key={genre.id}>
-       <p>{genre.name}</p>
+     {/* {genr.map((g) => (
+      <li key={g.id}>
+       <p>{g.name}</p>
       </li>
      ))} */}
     </li>
-   </>
+     <h2 className="movieDetailsAdditionalInformation">
+      Additional information
+     </h2>
+   </MovieDetailsContainerStyled>
   );
  }
 }

@@ -1,17 +1,17 @@
-import CastPage from "../pages/CastPage";
-import ReviewsPage from "../pages/ReviewsPage";
+import Cast from "../components/cast/Cast";
+import Reviews from "../components/reviews/Reviews";
 
-export const detailRoute = [
+export const datailsRoute = [
  {
   name: "Cast",
-  path: "/movies/:movieId/cast",
+  path: "/cast",
   exact: true,
-  component: CastPage,
+  component: Cast,
  },
  {
   name: "Reviews",
-  path: "/movies/:movieId/reviews",
+  path: "/reviews",
   exact: true,
-  component: ReviewsPage,
+  component: Reviews,
  },
 ];

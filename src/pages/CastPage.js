@@ -1,13 +1,12 @@
-import React from "react";
-import Cast from "../components/cast/Cast";
+// import React from "react";
+// import Cast from "../components/cast/Cast";
 
-const CastPage = () => {
- return (
-  <>
-   <Cast/>
-   <p>CastPage</p>
-  </>
- );
-};
+// const CastPage = () => {
+//  return (
+//   <>
+//    <Cast />
+//   </>
+//  );
+// };
 
-export default CastPage;
+// export default CastPage;
