@@ -3,6 +3,7 @@ import { TrandingContainerStyled } from "./TrandingStyled";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import defaultImgTranding from '../../images/defaultfoto.jpg';
 
 class Tranding extends Component {
  state = {
@@ -48,7 +49,11 @@ class Tranding extends Component {
        <li key={muv.id} className="trandingTodayFilmLi">
         <img
          className="filmTrandingTodayImg"
-         src={`https://image.tmdb.org/t/p/w300${muv.poster_path} `}
+         src={
+          muv.poster_path
+           ? `https://image.tmdb.org/t/p/w300${muv.poster_path}`
+           : defaultImgTranding
+         }
          alt={muv.title}
         />
        </li>

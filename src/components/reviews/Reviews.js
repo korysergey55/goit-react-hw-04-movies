@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { ReviewdConteinerStyled } from "./ReviewsStyled";
 
 class Reviews extends Component {
  state = {
-  casts: [],
+  reviews: [],
  };
  componentDidMount() {
   this.getReviewsApi();
@@ -15,18 +16,27 @@ class Reviews extends Component {
 
   try {
    const movieReviewsApi = await axios.get(
-    `${BASE_URL}movie/717192/reviews?api_key=${KEY}&language=en-US&page=1`
+    `${BASE_URL}movie/${this.props.match.params.movieId}/reviews?api_key=${KEY}&language=en-US&page=1`
    );
-   this.setState({ casts: movieReviewsApi.data });
+   this.setState({ reviews: movieReviewsApi.data.results });
   } catch (error) {
    console.log(error);
   }
  };
  render() {
   return (
-   <>
-    <p>Reviews</p>
-   </>
+   <ReviewdConteinerStyled>
+    {this.state.reviews.map((review) =>
+     review ? (
+      <li className="reviewItem" key={review.id}>
+       <p className="reviewAuthor">Author: {review.author}</p>
+       <p>{review.content}</p>
+      </li>
+     ) : (
+      "We dont hawe any reviws for this muvie"
+     )
+    )}
+   </ReviewdConteinerStyled>
   );
  }
 }

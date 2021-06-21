@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { MovieDetailsContainerStyled } from "./MovieDetailsStyled";
+import defaultImgTranding from "../../images/defaultfoto.jpg";
 import axios from "axios";
 
 class MovieDetails extends Component {
  state = {
   muvies: {},
-  id: null,
+
+  from: "",
  };
 
  componentDidMount() {
   this.getMovieDetailsApi();
- }
+//   if (this.props.location.state) {
+//    this.setState({ from: this.props.props.location.state });
+//   }
+    this.setState({ from: this.props.props.location.state });
+   }
 
  getMovieDetailsApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
@@ -20,23 +26,29 @@ class MovieDetails extends Component {
    const movieDetailsApi = await axios.get(
     `${BASE_URL}movie/${this.props.filmId}?api_key=${KEY}&language=en-US`
    );
-  this.setState({ muvies: movieDetailsApi.data });
+   this.setState({ muvies: movieDetailsApi.data });
   } catch (error) {
    console.log(error);
   }
  };
 
+ goBack = () => {
+  this.props.props.history.push({ pathname: this.state.from });
+ };
+
  render() {
-  //  const genr = this.state.muvies.genres;
+  //   const genr = this.state.muvies.genres;
+  //   console.log(genr);
+  console.log(this.props);
 
   return (
    <MovieDetailsContainerStyled>
-    <button type="button" className="buttonGoback">
+    <button type="button" className="buttonGoback" onClick={this.goBack}>
      Go back
     </button>
     <img
      className="movieDetailsImg"
-     src={`https://image.tmdb.org/t/p/w300${this.state.muvies.poster_path} `}
+     src={this.state.muvies.poster_path ? `https://image.tmdb.org/t/p/w300${this.state.muvies.poster_path} ` : defaultImgTranding}
      alt={this.state.muvies.title}
     />
     <li className="movieDetailsLi">
@@ -56,9 +68,9 @@ class MovieDetails extends Component {
       </li>
      ))} */}
     </li>
-     <h2 className="movieDetailsAdditionalInformation">
-      Additional information
-     </h2>
+    <h2 className="movieDetailsAdditionalInformation">
+     Additional information
+    </h2>
    </MovieDetailsContainerStyled>
   );
  }

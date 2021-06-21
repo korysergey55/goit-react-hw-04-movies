@@ -24,4 +24,5 @@ export const mainRouts = [
   component: MovieDetailsPage,
   isLink: false,
  },
+ 
 ];

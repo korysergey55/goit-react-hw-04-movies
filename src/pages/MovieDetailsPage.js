@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 import MovieDetails from "../components/movieDetails/MovieDetails";
 import { datailsRoute } from "../routs/datailsRouter";
-import { NavLink, Switch, Route } from "react-router-dom";
+import { NavLink, Switch, Route, withRouter } from "react-router-dom";
 
 class MovieDetailsPage extends Component {
- state = { from: "", movieID: "", film: {}, search: "" };
+ state = {
+  from: "",
+ };
 
  render() {
   
   return (
    <>
-    <MovieDetails filmId={this.props.match.params.movieId} />
+    <MovieDetails filmId={this.props.match.params.movieId} props={this.props} />
 
-    {datailsRoute.map(({ name, exact, path }) => (
-     <li key={path}>
-      <NavLink to={this.props.match.url + path} exact={exact}>
-       {name}
-      </NavLink>
-     </li>
-    ))}
+    <ul>
+     {datailsRoute.map(({ name, exact, path }) => (
+      <li key={path}>
+       <NavLink
+        className="linkDetails"
+        activeClassName="linkDetailActiv"
+        to={this.props.match.url + path}
+        exact={exact}
+       >
+        {name}
+       </NavLink>
+      </li>
+     ))}
+    </ul>
 
     <Switch>
      {datailsRoute.map(({ component, exact, path }) => (
       <Route
-       to={this.props.match.path + path}
+       to={this.props.match.url + path}
+       path={this.props.match.path + path}
        exact={exact}
        component={component}
        key={path}
@@ -35,6 +45,4 @@ class MovieDetailsPage extends Component {
  }
 }
 
-export default MovieDetailsPage;
-
-
+export default withRouter(MovieDetailsPage);

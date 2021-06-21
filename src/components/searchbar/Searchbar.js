@@ -3,6 +3,7 @@ import { SearchBarConteinerStyled } from "./SearchbarStyled";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import defaultImgTranding from "../../images/defaultfoto.jpg";
 
 class Searchbar extends Component {
  state = {
@@ -56,7 +57,7 @@ class Searchbar extends Component {
        <li key={muv.id} className="searchFilmLi">
         <img
          className="filmSearchImg"
-         src={`https://image.tmdb.org/t/p/w300${muv.poster_path} `}
+         src={muv.poster_path ? `https://image.tmdb.org/t/p/w300${muv.poster_path} ` : defaultImgTranding}
          alt={muv.title}
         />
        </li>
@@ -68,10 +69,5 @@ class Searchbar extends Component {
  }
 }
 
-
-Searchbar.defaultProps = {
- imgUrl:
-  "https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder",
-};
 
 export default Searchbar;

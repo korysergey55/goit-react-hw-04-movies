@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { CastContainerStyled } from "./CastStyled";
+import defaultImg from "../../images/InkedcastDefaultFoto.jpg";
 
 class Cast extends Component {
  state = {
@@ -16,26 +18,34 @@ class Cast extends Component {
 
   try {
    const movieCastsApi = await axios.get(
-    `${BASE_URL}movie/717192/credits?api_key=${KEY}&language=en-US`
+    `${BASE_URL}movie/${this.props.match.params.movieId}/credits?api_key=${KEY}&language=en-US`
    );
 
    this.setState({ casts: movieCastsApi.data.cast });
-   
   } catch (error) {
    console.log(error);
   }
  };
  render() {
+  console.log(this.state.casts);
+
   return (
-   <>
-    <p>CastComponent</p>
+   <CastContainerStyled>
     {this.state.casts.map((cast) => (
-     <li key={cast.id}>
-      <p>{cast.character}</p>
-      <img src={`https://image.tmdb.org/t/p/w300${cast.avatar_path}`}></img>
+     <li key={cast.id} className="castItem">
+      <p className="casActor">{cast.character ? cast.character : "Actor"}</p>
+      <img
+       src={
+        cast.profile_path
+         ? `https://image.tmdb.org/t/p/w92/${cast.profile_path}`
+         : defaultImg
+       }
+       alt="castFoto"
+       className="castFoto"
+      ></img>
      </li>
     ))}
-   </>
+   </CastContainerStyled>
   );
  }
 }
