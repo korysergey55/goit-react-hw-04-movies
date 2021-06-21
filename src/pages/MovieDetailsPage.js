@@ -9,7 +9,6 @@ class MovieDetailsPage extends Component {
  };
 
  render() {
-  
   return (
    <>
     <MovieDetails filmId={this.props.match.params.movieId} props={this.props} />

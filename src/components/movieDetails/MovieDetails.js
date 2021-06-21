@@ -6,17 +6,14 @@ import axios from "axios";
 class MovieDetails extends Component {
  state = {
   muvies: {},
-
+  genres: [],
   from: "",
  };
 
  componentDidMount() {
   this.getMovieDetailsApi();
-//   if (this.props.location.state) {
-//    this.setState({ from: this.props.props.location.state });
-//   }
-    this.setState({ from: this.props.props.location.state });
-   }
+  this.setState({ from: this.props.props.location.state });
+ }
 
  getMovieDetailsApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
@@ -26,7 +23,10 @@ class MovieDetails extends Component {
    const movieDetailsApi = await axios.get(
     `${BASE_URL}movie/${this.props.filmId}?api_key=${KEY}&language=en-US`
    );
-   this.setState({ muvies: movieDetailsApi.data });
+   this.setState({
+    muvies: movieDetailsApi.data,
+    genres: movieDetailsApi.data.genres,
+   });
   } catch (error) {
    console.log(error);
   }
@@ -37,8 +37,7 @@ class MovieDetails extends Component {
  };
 
  render() {
-  //   const genr = this.state.muvies.genres;
-  //   console.log(genr);
+  
   console.log(this.props);
 
   return (
@@ -48,7 +47,11 @@ class MovieDetails extends Component {
     </button>
     <img
      className="movieDetailsImg"
-     src={this.state.muvies.poster_path ? `https://image.tmdb.org/t/p/w300${this.state.muvies.poster_path} ` : defaultImgTranding}
+     src={
+      this.state.muvies.poster_path
+       ? `https://image.tmdb.org/t/p/w300${this.state.muvies.poster_path} `
+       : defaultImgTranding
+     }
      alt={this.state.muvies.title}
     />
     <li className="movieDetailsLi">
@@ -61,12 +64,11 @@ class MovieDetails extends Component {
      <h2>Overview</h2>
      <p>{this.state.muvies.overview}</p>
      <h2>Genres</h2>
-     <p>{this.state.muvies.tagline}</p>
-     {/* {genr.map((g) => (
-      <li key={g.id}>
-       <p>{g.name}</p>
+     {this.state.genres.map((genr) => (
+      <li key={genr.id} className="genrItem">
+       <p className="genrName">{genr.name}</p>
       </li>
-     ))} */}
+     ))}
     </li>
     <h2 className="movieDetailsAdditionalInformation">
      Additional information

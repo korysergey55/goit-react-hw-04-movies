@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const MovieDetailsContainerStyled = styled.div`
- 
  .movieDetailsImg {
   display: inline-block;
   border-radius: 5px;
@@ -16,10 +15,16 @@ export const MovieDetailsContainerStyled = styled.div`
    font-weight: 500;
   }
  }
+ .genrItem {
+  list-style: none;
 
+  .genrName {
+   font-weight: 500;
+   color: green;
+  }
+ }
  .movieDetailsAdditionalInformation {
   display: block;
   margin-left: 20px;
  }
- 
 `;
