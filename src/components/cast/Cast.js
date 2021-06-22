@@ -27,8 +27,7 @@ class Cast extends Component {
   }
  };
  render() {
-  console.log(this.state.casts);
-
+  
   return (
    <CastContainerStyled>
     {this.state.casts.map((cast) => (

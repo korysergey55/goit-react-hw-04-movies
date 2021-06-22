@@ -11,7 +11,7 @@ class MovieDetailsPage extends Component {
  render() {
   return (
    <>
-    <MovieDetails {...this.props} filmId={this.props.match.params.movieId}/>
+    <MovieDetails {...this.props} />
 
     <ul>
      {datailsRoute.map(({ name, exact, path }) => (

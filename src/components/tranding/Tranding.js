@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { TrandingContainerStyled } from "./TrandingStyled";
-import PropTypes from "prop-types";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import defaultImgTranding from "../../images/defaultfoto.jpg";

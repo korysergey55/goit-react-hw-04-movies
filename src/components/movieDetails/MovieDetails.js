@@ -8,18 +8,18 @@ class MovieDetails extends Component {
   muvies: {},
   genres: [],
   from: "",
-  search: ""
+  search: "",
  };
 
  componentDidMount() {
   this.getMovieDetailsApi();
 
-   if (this.props.location.from) {
+  if (this.props.location.from) {
    this.setState({
     from: this.props.location.from,
     search: this.props.location.search,
-    });
-  } 
+   });
+  }
  }
 
  getMovieDetailsApi = async () => {
@@ -28,7 +28,7 @@ class MovieDetails extends Component {
 
   try {
    const movieDetailsApi = await axios.get(
-    `${BASE_URL}movie/${this.props.filmId}?api_key=${KEY}&language=en-US`
+    `${BASE_URL}movie/${this.props.match.params.movieId}?api_key=${KEY}&language=en-US`
    );
    this.setState({
     muvies: movieDetailsApi.data,
@@ -40,16 +40,13 @@ class MovieDetails extends Component {
  };
 
  goBack = () => {
-  
-   console.log(this.props.location);
   this.props.history.push({
-     pathname: this.props.location.from,
+   pathname: this.props.location.from,
    search: this.props.location.search,
   });
  };
 
  render() {
- 
   return (
    <MovieDetailsContainerStyled>
     <button
