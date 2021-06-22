@@ -6,11 +6,10 @@ import {HeaderNavConteinerStyled} from './HeaderStyled';
 const Header = ({ location }) => {
 
  return (
-   
   <HeaderNavConteinerStyled>
    <ul className="NavLinkContainer">
     {mainRouts.map(
-     ({path, name, exact,isLink}) =>
+     ({ path, name, exact, isLink }) =>
       isLink && (
        <li key={path}>
         <NavLink
@@ -18,7 +17,7 @@ const Header = ({ location }) => {
           pathname: path,
           state: { from: location.pathname },
          }}
-         exact= {exact}
+         exact={exact}
          className="NavLink"
          activeClassName="NavLinkActiv"
         >

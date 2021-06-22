@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { TrandingContainerStyled } from "./TrandingStyled";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import defaultImgTranding from '../../images/defaultfoto.jpg';
+import { Link, withRouter } from "react-router-dom";
+import defaultImgTranding from "../../images/defaultfoto.jpg";
 
 class Tranding extends Component {
  state = {
@@ -14,9 +14,11 @@ class Tranding extends Component {
  componentDidMount() {
   this.getTrandingMuvieApi();
  }
-//   componentDidUpdate(prevProps, prevState) {
-//    this.getTrandingMuvieApi();
-//   }
+ componentDidUpdate(prevProps, prevState) {
+  if (this.state.page !== prevState.page) {
+   this.getTrandingMuvieApi();
+  }
+ }
 
  getTrandingMuvieApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
@@ -26,18 +28,19 @@ class Tranding extends Component {
    const trandingApi = await axios.get(
     `${BASE_URL}movie/popular?api_key=${KEY}&language=en-US&page=${this.state.page}`
    );
-   this.setState({ muvies: trandingApi.data.results });
-  } catch (error) {
+    this.setState(({ muvies }) => ({
+     muvies: [...muvies, ...trandingApi.data.results],
+    }));
+   } catch (error) {
    console.log(error);
   }
  };
- 
-//  getShowMore = () => {
-//   this.setState((prevState) => ({
-//    page: prevState.page + 1,
-//    muvies: [...prevState.muvies, this.state.muvies],
-//   }));
-//  };
+
+  getShowMore = () => {
+   this.setState((prevState) => ({
+    page: prevState.page + 1,
+   }));
+  };
 
  render() {
   return (
@@ -45,7 +48,12 @@ class Tranding extends Component {
     <h2 className="trandingTodayTitle">Tranding today</h2>
     <ul className="trandingTodayFilmContainer">
      {this.state.muvies.map((muv) => (
-      <Link to={`/movies/${muv.id}`}>
+      <Link
+       to={{
+        pathname: `/movies/${muv.id}`,
+        from: this.props.location.pathname,
+       }}
+      >
        <li key={muv.id} className="trandingTodayFilmLi">
         <img
          className="filmTrandingTodayImg"
@@ -68,4 +76,4 @@ class Tranding extends Component {
  }
 }
 
-export default Tranding;
+export default withRouter(Tranding);

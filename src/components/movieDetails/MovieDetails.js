@@ -8,11 +8,18 @@ class MovieDetails extends Component {
   muvies: {},
   genres: [],
   from: "",
+  search: ""
  };
 
  componentDidMount() {
   this.getMovieDetailsApi();
-  this.setState({ from: this.props.props.location.state });
+
+   if (this.props.location.from) {
+   this.setState({
+    from: this.props.location.from,
+    search: this.props.location.search,
+    });
+  } 
  }
 
  getMovieDetailsApi = async () => {
@@ -33,16 +40,24 @@ class MovieDetails extends Component {
  };
 
  goBack = () => {
-  this.props.props.history.push({ pathname: this.state.from });
+  
+   console.log(this.props.location);
+  this.props.history.push({
+     pathname: this.props.location.from,
+   search: this.props.location.search,
+  });
  };
 
  render() {
-  
-  console.log(this.props);
-
+ 
   return (
    <MovieDetailsContainerStyled>
-    <button type="button" className="buttonGoback" onClick={this.goBack}>
+    <button
+     type="button"
+     className="buttonGoback"
+     onClick={this.goBack}
+     disabled={!this.state.from}
+    >
      Go back
     </button>
     <img

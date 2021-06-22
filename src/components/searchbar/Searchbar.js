@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { SearchBarConteinerStyled } from "./SearchbarStyled";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import defaultImgTranding from "../../images/defaultfoto.jpg";
 
 class Searchbar extends Component {
@@ -10,6 +10,20 @@ class Searchbar extends Component {
   muvies: [],
   searchWord: "",
  };
+
+ componentDidMount() {
+  const params = new URLSearchParams(this.props.location.search);
+  const query = params.get("query");
+  if (query) {
+   this.setState({ searchWord: query });
+  }
+ }
+
+ componentDidUpdate(prevProps, prevState) {
+  if (this.state.searchWord !== prevState.searchWord) {
+   this.getSearchMuvieApi();
+  }
+ }
 
  getSearchMuvieApi = async () => {
   const KEY = "6e40e6f870b3f7c3f9fcc54179d0bae2";
@@ -53,11 +67,21 @@ class Searchbar extends Component {
     </form>
     <ul className="searchFilmContainer">
      {this.state.muvies.map((muv) => (
-      <Link to={`/movies/${muv.id}`}>
+      <Link
+       to={{
+        pathname: `/movies/${muv.id}`,
+        from: this.props.location.pathname,
+        search: `?query=${this.state.searchWord}`,
+       }}
+      >
        <li key={muv.id} className="searchFilmLi">
         <img
          className="filmSearchImg"
-         src={muv.poster_path ? `https://image.tmdb.org/t/p/w300${muv.poster_path} ` : defaultImgTranding}
+         src={
+          muv.poster_path
+           ? `https://image.tmdb.org/t/p/w300${muv.poster_path} `
+           : defaultImgTranding
+         }
          alt={muv.title}
         />
        </li>
@@ -69,5 +93,4 @@ class Searchbar extends Component {
  }
 }
 
-
-export default Searchbar;
+export default withRouter(Searchbar);
