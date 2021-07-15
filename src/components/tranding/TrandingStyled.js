@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const TrandingContainerStyled = styled.div`
  .trandingTodayTitle {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #b8d3f8;
   font-size: 35px;
   font-weight: 700;
   text-align: center;
@@ -27,7 +30,7 @@ export const TrandingContainerStyled = styled.div`
  .showMore {
   display: block;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   width: 150px;
   height: 40px;
   border-radius: 15px;

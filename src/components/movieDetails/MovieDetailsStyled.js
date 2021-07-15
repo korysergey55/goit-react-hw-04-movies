@@ -8,6 +8,7 @@ export const MovieDetailsContainerStyled = styled.div`
   margin-right: 20px;
  }
  .movieDetailsLi {
+  color: white;
   display: inline-block;
   width: 700px;
 
@@ -26,5 +27,6 @@ export const MovieDetailsContainerStyled = styled.div`
  .movieDetailsAdditionalInformation {
   display: block;
   margin-left: 20px;
+  color: white;
  }
 `;
