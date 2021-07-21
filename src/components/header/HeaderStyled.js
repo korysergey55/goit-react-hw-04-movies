@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderNavConteinerStyled = styled.nav`
  padding: 7px;
  border-bottom: 3px solid black;
- background-color: rgb(175, 114, 86);
+ background-color: rgb(92, 203, 255);
 
  .NavLinkContainer {
   display: flex;
