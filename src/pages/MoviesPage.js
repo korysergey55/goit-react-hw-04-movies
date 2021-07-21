@@ -7,7 +7,6 @@ const MoviesPage = () => {
    <div className={styles.MoviesPageContainer}>
     <Searchbar />
    </div>
-   ;
   </>
  );
 };

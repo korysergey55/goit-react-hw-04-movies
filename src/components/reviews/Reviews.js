@@ -30,7 +30,7 @@ class Reviews extends Component {
      review ? (
       <li className="reviewItem" key={review.id}>
        <p className="reviewAuthor">Author: {review.author}</p>
-       <p>{review.content}</p>
+       <p className="reviewText">{review.content}</p>
       </li>
      ) : (
       "We dont hawe any reviws for this muvie"

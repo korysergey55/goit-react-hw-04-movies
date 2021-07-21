@@ -67,15 +67,15 @@ class MovieDetails extends Component {
      alt={this.state.muvies.title}
     />
     <li className="movieDetailsLi">
-     <h2>
+     <h2 className="title">
       {this.state.muvies.title} ({this.state.muvies.release_date})
      </h2>
      <p className="userScore">
       User score: {this.state.muvies.vote_average * 10} %
      </p>
-     <h2>Overview</h2>
+     <h2 className="overview">Overview</h2>
      <p>{this.state.muvies.overview}</p>
-     <h2>Genres</h2>
+     <h2 className="genres">Genres</h2>
      {this.state.genres.map((genr) => (
       <li key={genr.id} className="genrItem">
        <p className="genrName">{genr.name}</p>

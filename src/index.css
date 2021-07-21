@@ -3,7 +3,7 @@ body {
  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
  background-color: rgb(228, 152, 118);
- background-image: url('./images/cinemaBG2.jpg');
+ background-image: url('./images/cinemaBG.jpg');
  background-repeat: no-repeat;
  background-size: cover;
 }
@@ -17,10 +17,11 @@ ol {
 }
 .linkDetails {
  margin-right: 30px;
- font-size: 20px;
+ font-size: 30px;
  font-weight: 700;
  text-decoration: none;
- text-shadow: 2px 2px 3px rgba(71, 76, 64, 1);
+ text-shadow: 2px 2px 3px #ecffd1;
+ 
 }
 .linkDetailActiv {
  color: red;
@@ -32,11 +33,12 @@ ol {
  margin-bottom: 10px;
  margin-top: 10px;
  margin-left: 20px;
- border-radius: 15px;
+ border-radius: 13px;
  font-size: 20px;
  font-weight: 500;
+ background-color: rgb(0, 255, 42);
 }
 .buttonGoback:hover {
    cursor: pointer;
-   background-color: springgreen;
+   
   }

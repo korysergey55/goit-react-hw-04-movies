@@ -5,5 +5,6 @@ export const CastContainerStyled = styled.ul`
   justify-content: space-between;
   list-style: none;
   font-weight: 500;
+  color: white;
  }
 `;
