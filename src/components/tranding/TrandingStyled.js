@@ -30,16 +30,17 @@ export const TrandingContainerStyled = styled.div`
  .showMore {
   display: block;
   margin: 0 auto;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   width: 150px;
   height: 40px;
   border-radius: 15px;
   font-size: 20px;
   font-weight: 700;
+  background-color: #0227fa;
+  background-color: #33fd00;
 
   &:hover {
    cursor: pointer;
-   background-color: #5e76fa;
   }
  }
 `;

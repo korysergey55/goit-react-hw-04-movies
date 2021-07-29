@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const ReviewdConteinerStyled = styled.ul`
+ .reviewItem {
+  margin-right: 20px;
+  margin-bottom: 30px;
+ }
  .reviewAuthor {
   font-size: 20px;
   font-weight: 500;

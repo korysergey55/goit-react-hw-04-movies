@@ -17,10 +17,10 @@ class MovieDetailsPage extends Component {
      {datailsRoute.map(({ name, exact, path }) => (
       <li key={path}>
        <NavLink
-        className="linkDetails"
-        activeClassName="linkDetailActiv"
         to={this.props.match.url + path}
         exact={exact}
+        className="linkDetails"
+        activeClassName="linkDetailActiv"
        >
         {name}
        </NavLink>
@@ -31,7 +31,6 @@ class MovieDetailsPage extends Component {
     <Switch>
      {datailsRoute.map(({ component, exact, path }) => (
       <Route
-       to={this.props.match.url + path}
        path={this.props.match.path + path}
        exact={exact}
        component={component}

@@ -52,8 +52,9 @@ class Tranding extends Component {
         pathname: `/movies/${muv.id}`,
         from: this.props.location.pathname,
        }}
+       key={muv.id}
       >
-       <li key={muv.id} className="trandingTodayFilmLi">
+       <li className="trandingTodayFilmLi">
         <img
          className="filmTrandingTodayImg"
          src={

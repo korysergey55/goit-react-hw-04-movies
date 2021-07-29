@@ -12,9 +12,9 @@ class Searchbar extends Component {
 
  componentDidMount() {
   const params = new URLSearchParams(this.props.location.search);
-  const query = params.get("query");
-  if (query) {
-   this.setState({ searchWord: query });
+  const searchQuery = params.get("query");
+  if (searchQuery) {
+   this.setState({ searchWord: searchQuery });
   }
  }
 
@@ -41,6 +41,9 @@ class Searchbar extends Component {
  hadleSubmit = (evt) => {
   evt.preventDefault();
   this.getSearchMuvieApi();
+  if (this.state.muvies.length < 1) {
+   alert("There are no films with that name");
+  }
  };
 
  seveInputValue = (evt) => {
@@ -56,9 +59,10 @@ class Searchbar extends Component {
       className="SearchFormInput"
       type="text"
       name="searchWord"
-      autocomplete="off"
-      autofocus
-      placeholder=" Enter movie heare"
+      value={this.state.searchWord}
+      autoComplete="off"
+      autoFocus
+      placeholder=" Enter movie to find "
      />
      <button type="submit" className="SearchFormButton">
       <span className="SearchForm-button-label">Search</span>
@@ -71,9 +75,11 @@ class Searchbar extends Component {
         pathname: `/movies/${muv.id}`,
         from: this.props.location.pathname,
         search: `?query=${this.state.searchWord}`,
+        // state: this.props.location.state,
        }}
+       key={muv.id}
       >
-       <li key={muv.id} className="searchFilmLi">
+       <li className="searchFilmLi">
         <img
          className="filmSearchImg"
          src={

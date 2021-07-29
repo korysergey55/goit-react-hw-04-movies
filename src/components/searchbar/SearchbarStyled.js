@@ -17,13 +17,15 @@ export const SearchBarConteinerStyled = styled.div`
  .SearchFormButton {
   width: 150px;
   height: 40px;
-  border-radius: 15px;
+  border-radius: 7px;
   font-size: 20px;
   font-weight: 700;
-
+  background-color: #006eff;
+  color: white;
   &:hover {
    cursor: pointer;
-   background-color: springgreen;
+   background-color: #7bff00;
+   color: black;
   }
  }
  .searchFilmContainer {
