@@ -13,7 +13,7 @@ class MovieDetailsPage extends Component {
    <>
     <MovieDetails {...this.props} />
 
-    <ul>
+    <ul className="linkDetailsContainer">
      {datailsRoute.map(({ name, exact, path }) => (
       <li key={path}>
        <NavLink

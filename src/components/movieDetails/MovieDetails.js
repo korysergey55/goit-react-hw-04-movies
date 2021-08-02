@@ -41,7 +41,7 @@ class MovieDetails extends Component {
 
  goBack = () => {
   this.props.history.push({
-   pathname: this.props.location.from ?? "/", //this.props.location.state
+   pathname: this.props.location.from ?? "/movies", //this.props.location.state
    search: this.props.location.search,
   });
  };

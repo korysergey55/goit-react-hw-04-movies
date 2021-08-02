@@ -62,7 +62,7 @@ class Searchbar extends Component {
       value={this.state.searchWord}
       autoComplete="off"
       autoFocus
-      placeholder=" Enter movie to find "
+      placeholder=" Enter movie "
      />
      <button type="submit" className="SearchFormButton">
       <span className="SearchForm-button-label">Search</span>

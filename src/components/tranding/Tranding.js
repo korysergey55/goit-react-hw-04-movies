@@ -27,19 +27,19 @@ class Tranding extends Component {
    const trandingApi = await axios.get(
     `${BASE_URL}movie/popular?api_key=${KEY}&language=en-US&page=${this.state.page}`
    );
-    this.setState(({ muvies }) => ({
-     muvies: [...muvies, ...trandingApi.data.results],
-    }));
-   } catch (error) {
+   this.setState(({ muvies }) => ({
+    muvies: [...muvies, ...trandingApi.data.results],
+   }));
+  } catch (error) {
    console.log(error);
   }
  };
 
-  getShowMore = () => {
-   this.setState((prevState) => ({
-    page: prevState.page + 1,
-   }));
-  };
+ getShowMore = () => {
+  this.setState((prevState) => ({
+   page: prevState.page + 1,
+  }));
+ };
 
  render() {
   return (
