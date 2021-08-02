@@ -12,9 +12,7 @@ export const MovieDetailsContainerStyled = styled.div`
   font-size: 15px;
   font-weight: 500;
   background-color: rgb(82, 248, 4);
-  /* border: 1px solid white; */
-
-  box-shadow: 2px 2px 3px #ecffd1;
+   box-shadow: 2px 2px 3px #ecffd1;
  }
  .buttonGoback:hover {
   background-color: rgb(0, 255, 42);
@@ -23,6 +21,7 @@ export const MovieDetailsContainerStyled = styled.div`
  .movieDetailsImg {
   display: block;
   margin: 0 auto;
+  
   max-width: 250px;
   border-radius: 5px;
  }
@@ -114,6 +113,7 @@ export const MovieDetailsContainerStyled = styled.div`
   }
   .movieDetailsImg {
    display: inline-block;
+   margin-top: 20px;
    border-radius: 5px;
    margin-left: 20px;
    margin-right: 20px;
