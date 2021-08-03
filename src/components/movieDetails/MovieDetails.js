@@ -9,6 +9,7 @@ class MovieDetails extends Component {
   genres: [],
   from: "",
   search: "",
+  id: "",
  };
 
  componentDidMount() {
@@ -18,6 +19,7 @@ class MovieDetails extends Component {
    this.setState({
     from: this.props.location.from,
     search: this.props.location.search,
+    id: this.props.match.params.movieId,
    });
   }
  }
@@ -41,8 +43,8 @@ class MovieDetails extends Component {
 
  goBack = () => {
   this.props.history.push({
-   pathname: this.props.location.from ?? "/movies", //this.props.location.state
-   search: this.props.location.search,
+   pathname: this.state.from ?? this.props.location.from,
+   search: this.state.search,
   });
  };
 

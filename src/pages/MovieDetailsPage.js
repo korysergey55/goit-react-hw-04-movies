@@ -4,10 +4,6 @@ import { datailsRoute } from "../routs/datailsRouter";
 import { NavLink, Switch, Route, withRouter } from "react-router-dom";
 
 class MovieDetailsPage extends Component {
- state = {
-  from: "",
- };
-
  render() {
   return (
    <>
@@ -17,7 +13,10 @@ class MovieDetailsPage extends Component {
      {datailsRoute.map(({ name, exact, path }) => (
       <li key={path}>
        <NavLink
-        to={this.props.match.url + path}
+        to={{
+         pathname: this.props.match.url + path,
+         from: this.props.location.pathname,
+        }}
         exact={exact}
         className="linkDetails"
         activeClassName="linkDetailActiv"

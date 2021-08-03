@@ -8,18 +8,15 @@ class Searchbar extends Component {
  state = {
   muvies: [],
   searchWord: "",
-  // queryParams: "",
  };
 
- // useQery = () => {
- //  const params = new URLSearchParams(this.props.location.search);
- //  const searchQuery = params.get("query");
- //  if (searchQuery) {
- //   this.setState(
- //    {queryParams: searchQuery}
- //   );
- //  }
- // };
+ //  useQeryParams = () => {
+ //   const params = new URLSearchParams(this.props.location.search);
+ //   const searchQuery = params.get("query");
+ //   if (searchQuery) {
+ //    this.setState({ searchWord: searchQuery });
+ //   }
+ //  };
 
  componentDidMount() {
   const params = new URLSearchParams(this.props.location.search);
